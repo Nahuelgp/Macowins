@@ -6,7 +6,7 @@ class Negocio {
     }
 
     double gananciasDelDia(Date unaFecha) {
-        return ventas.stream.filter(venta -> venta.getFecha() == unaFecha).count();
+        return ventas.stream.filter(venta -> venta.getFecha() == unaFecha).getGanancias();
     }
 }
 
@@ -60,14 +60,42 @@ class Efectivo implements MedioDePago{
 
 class Prenda {
     Estado estado;
+    TipoDePrenda tipo;
     double precioBase;
-    Prenda(double precioBase, Estado estado) {
+    Prenda(double precioBase, TipoDePrenda tipo, Estado estado) {
         this.estado = estado;
+        this.tipo = tipo;
         this.precioBase = precioBase;
     }
     
     double precio() {
         return estado.precio(precioBase);
+    }
+    
+    String tipoDePrenda() {
+        return tipo.tipo();
+    }
+}
+
+interface TipoDePrenda {
+    String tipo();
+}
+
+class Saco implements TipoDePrenda{
+    public String tipo() {
+        return "Saco";
+    }
+}
+
+class Pantalon implements TipoDePrenda{
+    public String tipo() {
+        return "Pantalón";
+    }
+}
+
+class Camisa implements TipoDePrenda{
+    public String tipo() {
+        return "Camisa";
     }
 }
 
@@ -96,3 +124,21 @@ class Liquidacion implements Estado {
         return precioBase * 0.5;
     }
 }
+
+/*
+
+
+REQUERIMIENTOS:
+
+1) Se debe poder obtener el precio de venta de una prenda y su tipo.
+
+2) Se debe tener que registrar las ventas para poder obtener la ganancia total de las ventas en una fecha en específico.
+
+ACLARACIONES:
+
+- No se mucho de java asi que hice todo basandome en todo lo que se encuentra en la guia de mumuki.
+
+- El recargo en vez de hacerlo por el precio de cada prenda lo hice por el precio de todas sacando factor comun el 0.1.
+
+
+*/
