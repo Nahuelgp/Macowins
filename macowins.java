@@ -1,4 +1,4 @@
-class Macowins {
+class Negocio {
     List<Venta> ventas = new ArrayList<>();
 
     void registrarVenta(Venta unaVenta) {
@@ -11,12 +11,12 @@ class Macowins {
 }
 
 class Venta{
-    List<Prenda, Integer> prendas = new ArrayList<>();
+    List<Prenda> prendas = new ArrayList<>();
     Date fecha;
     double ganancias;
     MedioDePago medioDePago;
 
-    Venta(List<Prenda, Integer> prendas, Date fecha, MedioDePago medioDePago) {
+    Venta(List<Prenda> prendas, Date fecha, MedioDePago medioDePago) {
         this.prendas = prendas;
         this.fecha = fecha;
         this.medioDePago = medioDePago;
